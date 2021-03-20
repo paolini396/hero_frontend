@@ -10,7 +10,7 @@ import { useToast } from '../../hooks/tost';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/hero.png';
 import { Container, Content, AnimationContainer, Background } from './styles';
 
 import Input from '../../components/Input';
@@ -77,7 +77,7 @@ const SignUp: React.FC = () => {
       <Background />
       <Content>
         <AnimationContainer>
-          <img src={Logo} alt="Gobarber" />
+          <img src={Logo} alt="Hero" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu cadastro</h1>
@@ -96,7 +96,7 @@ const SignUp: React.FC = () => {
           </Form>
           <Link to="/">
             <FiArrowLeft />
-            Voltar para logon
+            Voltar para login
           </Link>
         </AnimationContainer>
       </Content>

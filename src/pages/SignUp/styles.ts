@@ -1,13 +1,14 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import signInBackgroundImg from '../../assets/sign-up-background.png';
+import signInBackgroundImg from '../../assets/sign-out-background.jpg';
 
 export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
   overflow: hidden;
+  min-width: 360px;
 `;
 
 export const Content = styled.div`
@@ -40,9 +41,14 @@ export const AnimationContainer = styled.div`
 
   animation: ${appearFromRight} 1s;
 
+  img {
+    width: 240px;
+    height: 100px;
+  }
+
   form {
     width: 340px;
-    margin: 80px 0;
+    margin: 50px 0;
     text-align: center;
 
     h1 {
@@ -66,7 +72,7 @@ export const AnimationContainer = styled.div`
     margin-top: 24px;
     display: block;
     text-decoration: none;
-    color: #ff9000;
+    color: #da5221;
     transition: color 0.2s;
     display: flex;
     align-items: center;
@@ -76,7 +82,7 @@ export const AnimationContainer = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, '#ff9000')};
+      color: ${shade(0.2, '#da5221')};
     }
   }
 `;

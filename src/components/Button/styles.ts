@@ -8,12 +8,12 @@ export const Container = styled.button`
   width: 100%;
   margin-top: 16px;
   border-radius: 4px;
-  background: #ff9000;
-  color: #312e38;
+  background: #da5221;
+  color: #000;
   font-weight: 500;
   transition: background-color 0.2s;
 
   &:hover {
-    background: ${shade(0.2, '#ff9000')};
+    background: ${shade(0.2, '#da5221')};
   }
 `;

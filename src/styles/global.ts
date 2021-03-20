@@ -1,6 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  :root {
+    --background: #fff;
+    --primaryColor: #da5221;
+    --textColor: #000000;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -9,13 +15,13 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #312e38;
-    color: #FFF;
+    background: var(---background);
+    color: var(--textColor);
     -webkit-font-smoothing: antialiased;
   }
 
   body, input, button {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     font-size: 16px;
   }
 
