@@ -25,7 +25,7 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
 
-  const { signIn } = useAuth();
+  const { signIn, authLoading } = useAuth();
   const { addToast } = useToast();
 
   const handleSubmit = useCallback(
@@ -88,7 +88,9 @@ const SignIn: React.FC = () => {
               placeholder="Senha"
             />
 
-            <Button type="submit">Entrar</Button>
+            <Button type="submit">
+              {authLoading ? 'Carregando...' : 'Entrar'}
+            </Button>
 
           </Form>
           <Link to="/signup">
