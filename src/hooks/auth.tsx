@@ -1,9 +1,15 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
 interface AuthState {
   token?: string;
-  user: object;
+  user: User;
   authLoading: boolean;
 }
 
@@ -13,7 +19,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  user: User;
   authLoading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
@@ -34,7 +40,7 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    setData({ authLoading: true, user: {} })
+    setData({ authLoading: true } as AuthState);
     const response = await api.post('sessions', {
       email,
       password,
@@ -59,6 +65,7 @@ const AuthProvider: React.FC = ({ children }) => {
     <AuthContext.Provider
     value={{
       ...data,
+      user: data.user,
       signIn,
       signOut
     }}>

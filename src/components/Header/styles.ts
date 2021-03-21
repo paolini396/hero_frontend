@@ -7,20 +7,15 @@ export const Container = styled.div`
   justify-content: space-between;
 
   width: 100%;
+  min-width: 420px;
   height: 5rem;
   background: #151515;
-
-  img {
-    width: 120px;
-    height: 50px;
-    margin-left: 20px;
-  }
 
   button {
     border: 0;
     padding: 20px;
     border-radius: 8px;
-    margin-right: 20px;
+    margin-right: 60px;
     background: ${shade(-0.8, '#151515')};
     transition: background-color 0.2s;
 
@@ -35,18 +30,29 @@ export const Container = styled.div`
   }
 `;
 
-export const ContentList = styled.ul`
-  list-style: none;
+export const Content = styled.div`
   display: flex;
-  gap: 20px;
+  margin-left: 60px;
+  align-items: center;
+  gap: 40px;
+
+  img {
+      width: 120px;
+      height: 50px;
+    }
+
+    strong {
+      color: #fff;
+
+    }
+`;
+
+export const Profile = styled.div`
+  display: flex;
+  flex-direction: column;
 
   a {
     text-decoration: none;
     color: #da5221;
-    font-weight: 600;
-
-    &:hover {
-    color: ${shade(0.2, '#da5221')};
   }
-  }
-`
+`;
