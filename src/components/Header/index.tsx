@@ -18,7 +18,9 @@ export const Header: React.FC = ({ children }) => {
     <>
     <Container>
       <Content>
-        <img src={Logo} alt="Hero" />
+        <Link to="/dashboard">
+          <img src={Logo} alt="Hero" />
+        </Link>
         <Profile>
           <strong>Seja bem vindo,</strong>
           <Link to="/profile">{user?.name}</Link>
