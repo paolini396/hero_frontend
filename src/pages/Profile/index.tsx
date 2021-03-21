@@ -27,7 +27,7 @@ export const Profile = () => {
   const history = useHistory();
 
   const { addToast } = useToast();
-  const { updateUser, user } = useAuth();
+  const { updateUser, user, authLoading } = useAuth();
 
   const handleSubmit = useCallback(
     async (data: ProfileFormData) => {
@@ -150,7 +150,9 @@ export const Profile = () => {
         icon={FiMail}
       />
 
-      <Button type="submit" >Alterar dados</Button>
+      <Button type="submit" >
+        {authLoading ? 'Carregando...' : 'Alterar dados'}
+      </Button>
       </Form>
     </Container>
   );
