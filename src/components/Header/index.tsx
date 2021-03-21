@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 import { useAuth } from '../../hooks/auth';
@@ -14,18 +14,14 @@ export const Header: React.FC = ({ children }) => {
     await signOut();
   }
 
-  useEffect(() => {
-    console.log({user})
-  }, [])
-
   return (
     <>
     <Container>
       <Content>
         <img src={Logo} alt="Hero" />
         <Profile>
-          <strong>{`Bem vindo ${user?.name}`}</strong>
-          <Link to="/profile">Perfil</Link>
+          <strong>Seja bem vindo,</strong>
+          <Link to="/profile">{user?.name}</Link>
         </Profile>
       </Content>
 

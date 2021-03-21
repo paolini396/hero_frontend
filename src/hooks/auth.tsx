@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
 interface User {
-  id: string;
+  id?: string;
   name: string;
   email: string;
 }
@@ -23,6 +23,7 @@ interface AuthContextData {
   authLoading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
+  updateUser(user: User): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -33,6 +34,7 @@ const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem('@Hero:user');
 
     if (token && user) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
       return { token, user: JSON.parse(user), authLoading: false };
     }
 
@@ -61,13 +63,33 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  const updateUser = useCallback(
+    async (user: User) => {
+      setData({ authLoading: true } as AuthState);
+
+      console.log({user});
+      const response = await api.put('/profile', user);
+
+      console.log(response.data);
+      localStorage.setItem('@GoBarber:user', JSON.stringify(response.data));
+
+      setData({
+        token: data?.token,
+        user: response.data,
+        authLoading: false
+      });
+    },
+    [setData, data.token],
+  );
+
   return (
     <AuthContext.Provider
     value={{
       ...data,
       user: data.user,
       signIn,
-      signOut
+      signOut,
+      updateUser,
     }}>
       {children}
     </AuthContext.Provider>

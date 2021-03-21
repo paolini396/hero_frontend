@@ -42,7 +42,8 @@ export const Content = styled.div`
     }
 
     strong {
-      color: #fff;
+      color: #c4c4c4;
+      font-size: 16px;
 
     }
 `;
