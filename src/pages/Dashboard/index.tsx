@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
         />
         <TabButton
           id='2'
-          title="Historias em Quadrinhos"
+          title="Histórias em Quadrinhos"
           onClick={() => setDelectedTabId('2')}
           selected={selectedTabId === '2'}
         />
@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
       </Tabs>
 
       <Content>
-        
+
       </Content>
     </Container>
   )
