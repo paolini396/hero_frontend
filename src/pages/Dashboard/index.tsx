@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Content } from '../../components/Header/styles';
 
 import { TabButton } from '../../components/TabButton';
 import { Container, Tabs } from './styles';
@@ -29,10 +28,6 @@ const Dashboard: React.FC = () => {
           selected={selectedTabId === '3'}
         />
       </Tabs>
-
-      <Content>
-
-      </Content>
     </Container>
   )
 }
