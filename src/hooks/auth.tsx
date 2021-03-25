@@ -80,10 +80,8 @@ const AuthProvider: React.FC = ({ children }) => {
     async (user: User) => {
       setData({ authLoading: true, } as AuthState);
 
-      console.log({user});
       const response = await api.put('/profile', user);
 
-      console.log(response.data);
       localStorage.setItem('@GoBarber:user', JSON.stringify(response.data));
 
       setData({

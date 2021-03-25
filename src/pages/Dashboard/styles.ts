@@ -19,3 +19,17 @@ export const Tabs = styled.div`
    gap: 20px;
 
 `;
+
+export const Content = styled.div`
+  margin-top: 2.625rem;
+  height: calc(100vh - 250px);
+  overflow: auto;
+
+  .movies-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4.75rem;
+    list-style: none;
+  }
+
+`;

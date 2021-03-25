@@ -44,7 +44,6 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        console.log({data});
         await signIn({
           email: data.email,
           password: data.password,

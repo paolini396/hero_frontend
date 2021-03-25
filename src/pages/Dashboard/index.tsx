@@ -1,10 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { useComic } from '../../hooks/comic';
 
 import { TabButton } from '../../components/TabButton';
-import { Container, Tabs } from './styles';
+import { ComicCard } from '../../components/ComicCard';
+import { Container, Tabs, Content } from './styles';
 
 const Dashboard: React.FC = () => {
+  const { list, comics } = useComic();
+
   const [selectedTabId, setDelectedTabId] = useState('1');
+
+  useEffect(() => {
+    async function loadData() {
+      await list();
+    };
+    loadData();
+  }, [])
 
   return (
     <Container>
@@ -28,6 +40,18 @@ const Dashboard: React.FC = () => {
           selected={selectedTabId === '3'}
         />
       </Tabs>
+      <Content>
+        <div className="movies-list">
+
+          {comics?.map(comic => (
+            <ComicCard
+              key={comic.id}
+             title={comic.title}
+             poster={`${comic.image_url}.jpg`}
+           />
+          ))}
+        </div>
+      </Content>
     </Container>
   )
 }
