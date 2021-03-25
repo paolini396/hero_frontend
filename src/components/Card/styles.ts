@@ -15,12 +15,6 @@ export const Container = styled.button`
   }
 
   > div {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-
     display: flex;
     justify-content: center;
 
@@ -35,31 +29,19 @@ export const Container = styled.button`
       > span {
         font-weight: 600;
         font-size: 1rem;
-        color: #fbfbfb;
-
+        color: #000;
+        width: 100%;
         margin-top: auto;
-        margin-bottom: 0.5rem;
       }
 
       .meta {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
+        background: #000;
+        border-radius: 8px;
         margin-bottom: 1rem;
 
-        div {
-          display: flex;
-          align-items: center;
-
-          font-weight: 600;
-          color: #ff2;
-
-          svg {
-            color: #FAE800;
-            margin-right: 0.5rem;
-          }
-        }
       }
     }
   }

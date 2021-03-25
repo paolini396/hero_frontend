@@ -1,33 +1,21 @@
 import React from 'react';
 
-import { FiStar, FiClock } from 'react-icons/fi';
 import { Container } from './styles';
 
 interface CardProps {
   title: string;
   poster?: string;
-  rating?: string;
-  runtime?: string;
 }
 
 export function Card(props: CardProps) {
   return (
     <Container>
-      <img src={props.poster} alt={props.title} />
       <div>
         <div className="movie-info">
           <span>{props.title}</span>
-          <div className="meta">
-            <div>
-              <FiStar /> {props.rating}
-            </div>
-
-            <div>
-              <FiClock /> {props.runtime}
-            </div>
-          </div>
         </div>
       </div>
+      <img src={props.poster} alt={props.title} />
     </Container>
   );
 }
