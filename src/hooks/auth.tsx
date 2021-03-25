@@ -67,7 +67,7 @@ const AuthProvider: React.FC = ({ children }) => {
     }
 
 
-  }, []);
+  }, [setAuthData]);
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@Hero:token');
@@ -90,7 +90,7 @@ const AuthProvider: React.FC = ({ children }) => {
         authLoading: false
       });
     },
-    [setData, data.token],
+    [setData, data],
   );
 
   return (

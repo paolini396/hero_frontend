@@ -44,7 +44,7 @@ const ComicProvider: React.FC = ({ children }) => {
       throw err.message;
     }
 
-  }, []);
+  }, [setComicData]);
 
   return (
     <ComicContext.Provider
