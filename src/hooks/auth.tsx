@@ -29,7 +29,6 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
-
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Hero:token');
     const user = localStorage.getItem('@Hero:user');
@@ -43,31 +42,31 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const setAuthData = useCallback((newData: AuthState) => {
-    setData(oldData => ({...oldData, ...newData}));
-  },[])
+    setData(oldData => ({ ...oldData, ...newData }));
+  }, []);
 
-  const signIn = useCallback(async ({ email, password }) => {
-    setAuthData({ authLoading: true } as AuthState);
-    try {
-      const response = await api.post('sessions', {
-        email,
-        password,
-      });
+  const signIn = useCallback(
+    async ({ email, password }) => {
+      setAuthData({ authLoading: true } as AuthState);
+      try {
+        const response = await api.post('sessions', {
+          email,
+          password,
+        });
 
-      const { token, user } = response.data;
+        const { token, user } = response.data;
 
-      localStorage.setItem('@Hero:token', token);
-      localStorage.setItem('@Hero:user', JSON.stringify(user));
+        localStorage.setItem('@Hero:token', token);
+        localStorage.setItem('@Hero:user', JSON.stringify(user));
 
-      setAuthData({ token, user, authLoading: false });
-
-    } catch(err) {
-      setAuthData({authLoading: false} as AuthState);
-      throw err.message;
-    }
-
-
-  }, [setAuthData]);
+        setAuthData({ token, user, authLoading: false });
+      } catch (err) {
+        setAuthData({ authLoading: false } as AuthState);
+        throw err.message;
+      }
+    },
+    [setAuthData],
+  );
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@Hero:token');
@@ -78,7 +77,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const updateUser = useCallback(
     async (user: User) => {
-      setData({ authLoading: true, } as AuthState);
+      setData({ authLoading: true } as AuthState);
 
       const response = await api.put('/profile', user);
 
@@ -87,7 +86,7 @@ const AuthProvider: React.FC = ({ children }) => {
       setData({
         token: data?.token,
         user: response.data,
-        authLoading: false
+        authLoading: false,
       });
     },
     [setData, data],
@@ -95,13 +94,14 @@ const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider
-    value={{
-      ...data,
-      user: data.user,
-      signIn,
-      signOut,
-      updateUser,
-    }}>
+      value={{
+        ...data,
+        user: data.user,
+        signIn,
+        signOut,
+        updateUser,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

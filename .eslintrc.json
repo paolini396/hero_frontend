@@ -9,10 +9,6 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended"
     ],
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -23,22 +19,21 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint",
         "react-hooks",
+        "@typescript-eslint",
         "prettier"
     ],
     "rules": {
-      "prettier/prettier": "error",
-      "react/jsx-one-expression-per-line": "off",
-      "react/jsx-props-no-spreading": "off",
-      "react/prop-types": "off",
-      "@typescript-eslint/camelcase": "off",
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "no-unused-expressions": "off",
-      "import/no-duplicates": "off",
-      "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-      "import/prefer-default-export": "off",
+	    "react-hooks/exhaustive-deps": "warn",
+	    "react/jsx-filename-extension": [
+	      1,
+	      {
+	        "extensions": [
+	          ".tsx"
+	        ]
+	      }
+	    ],
 	    "import/extensions": [
 	      "error",
 	      "ignorePackages",
@@ -51,7 +46,8 @@
 	    "@typescript-eslint/no-use-before-define": [
 	      "error"
 	    ],
-	    "react/react-in-jsx-scope": "off"
+	    "react/react-in-jsx-scope": "off",
+      "prettier/prettier": "error"
     },
     "settings": {
       "import/resolver": {

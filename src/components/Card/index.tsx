@@ -1,25 +1,21 @@
- import React from 'react';
+import React from 'react';
 
 import { FiStar, FiClock } from 'react-icons/fi';
 import { Container } from './styles';
 
-interface ComicCardProps {
+interface CardProps {
   title: string;
   poster?: string;
   rating?: string;
   runtime?: string;
 }
 
-export function ComicCard(props: ComicCardProps) {
+export function Card(props: CardProps) {
   return (
     <Container>
-      <img
-        src={props.poster}
-        alt={props.title}
-      />
-
+      <img src={props.poster} alt={props.title} />
       <div>
-        <div className="movie-info" >
+        <div className="movie-info">
           <span>{props.title}</span>
           <div className="meta">
             <div>
@@ -33,5 +29,5 @@ export function ComicCard(props: ComicCardProps) {
         </div>
       </div>
     </Container>
-  )
+  );
 }

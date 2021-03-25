@@ -7,6 +7,7 @@ interface Comic {
   title: string;
   description: string;
   image_url: string;
+  extension: string;
 }
 
 interface ComicState {
@@ -18,7 +19,7 @@ interface ComicState {
 interface ComicContextData {
   comics?: Comic[];
   comic?: Comic;
-  authLoading?: boolean;
+  comicLoading?: boolean;
   list(): Promise<void>;
 }
 
@@ -37,6 +38,7 @@ const ComicProvider: React.FC = ({ children }) => {
     try {
       const { comics } = await api.get('comics').then(res => res.data);
 
+      console.log({comics})
       setComicData({ comicLoading: false, comics} as ComicState);
 
     } catch(err) {
