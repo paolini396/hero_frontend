@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
-import { FiUser, FiMail } from 'react-icons/fi';
+import { FiUser, FiMail,FiLock } from 'react-icons/fi';
 
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -12,7 +12,6 @@ import Button from '../../components/Button';
 
 import { Container } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
-import api from '../../services/api';
 
 interface ProfileFormData {
   name: string;
@@ -80,7 +79,7 @@ export const Profile = () => {
 
         await updateUser(formData);
 
-        history.push('/dashboard');
+        history.goBack();
 
         addToast({
           type: 'success',
@@ -107,17 +106,6 @@ export const Profile = () => {
     [addToast, history, updateUser],
   );
 
-  useEffect(() => {
-
-    async function load() {
-      const response = await api.get('/profile');
-
-      console.log(response.data);
-    }
-
-    load();
-  }, [])
-
   return(
     <Container>
       <strong>Meu Perfil</strong>
@@ -135,19 +123,19 @@ export const Profile = () => {
         type="password"
         name="old_password"
         placeholder="Senha Atual"
-        icon={FiMail}
+        icon={FiLock}
       />
       <Input
         name="password"
         type="password"
         placeholder="Nova Senha"
-        icon={FiMail}
+        icon={FiLock}
       />
       <Input
         type="password"
         name="password_confirmation"
         placeholder="Confirmar nova senha"
-        icon={FiMail}
+        icon={FiLock}
       />
 
       <Button type="submit" >

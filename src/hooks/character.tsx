@@ -38,8 +38,7 @@ const CharacterProvider: React.FC = ({ children }) => {
     try {
       const { characters } = await api.get('characters').then(res => res.data);
 
-      console.log({characters})
-      setCharacterData({ characterLoading: false, characters} as CharacterState);
+      setCharacterData({ characterLoading: false, characters } as CharacterState);
 
     } catch(err) {
       setCharacterData({characterLoading: false} as CharacterState);

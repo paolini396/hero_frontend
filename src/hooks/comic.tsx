@@ -38,7 +38,6 @@ const ComicProvider: React.FC = ({ children }) => {
     try {
       const { comics } = await api.get('comics').then(res => res.data);
 
-      console.log({comics})
       setComicData({ comicLoading: false, comics} as ComicState);
 
     } catch(err) {

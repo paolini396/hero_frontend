@@ -45,7 +45,6 @@ const Dashboard: React.FC = () => {
       </Tabs>
       <Content>
         <div className="movies-list">
-
           {selectedTabId === 'comics' && (
             <>
               {comics?.map(comic => (
