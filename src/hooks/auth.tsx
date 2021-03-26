@@ -77,17 +77,22 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const updateUser = useCallback(
     async (user: User) => {
-      setData({ authLoading: true } as AuthState);
+      setAuthData({ authLoading: true } as AuthState);
+      try {
+        const response = await api.put('/profile', user);
 
-      const response = await api.put('/profile', user);
+        localStorage.setItem('@GoBarber:user', JSON.stringify(response.data));
 
-      localStorage.setItem('@GoBarber:user', JSON.stringify(response.data));
+        setData({
+          token: data?.token,
+          user: response.data,
+          authLoading: false,
+        });
 
-      setData({
-        token: data?.token,
-        user: response.data,
-        authLoading: false,
-      });
+      } catch (err) {
+        setAuthData({ authLoading: false } as AuthState);
+        throw err.message;
+      }
     },
     [setData, data],
   );

@@ -15,5 +15,10 @@ export const Container = styled.div`
     text-align: start;
   }
 
+  form {
+    width: 340px;
+    text-align: center;
+  }
+
 
 `;

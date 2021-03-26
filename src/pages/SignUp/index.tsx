@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -25,6 +25,8 @@ interface SignUpFormData {
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
+
+  const [userLoadig, setUserLoading] = useState(false);
 
   const { addToast } = useToast();
 
@@ -68,6 +70,8 @@ const SignUp: React.FC = () => {
           description: 'Ocorreu um error ao fazer o cadastro, tente novamente.',
         });
       }
+
+      setUserLoading(false);
     },
     [addToast, history],
   );
@@ -92,7 +96,9 @@ const SignUp: React.FC = () => {
               placeholder="Senha"
             />
 
-            <Button type="submit">Cadastrar</Button>
+            <Button type="submit">
+              {userLoadig ? 'Carregando...' : 'Cadastrar'}
+            </Button>
           </Form>
           <Link to="/">
             <FiArrowLeft />
