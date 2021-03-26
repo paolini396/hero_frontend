@@ -115,32 +115,32 @@ export const Profile = () => {
         onSubmit={handleSubmit}
       >
 
-      <Input name="name" placeholder="Nome" icon={FiUser} />
-      <Input name="email" placeholder="E-mail" icon={FiMail} />
+        <Input name="name" placeholder="Nome" icon={FiUser} />
+        <Input name="email" placeholder="E-mail" icon={FiMail} />
 
-      <Input
-        containerStyle={{marginTop: 24}}
-        type="password"
-        name="old_password"
-        placeholder="Senha Atual"
-        icon={FiLock}
-      />
-      <Input
-        name="password"
-        type="password"
-        placeholder="Nova Senha"
-        icon={FiLock}
-      />
-      <Input
-        type="password"
-        name="password_confirmation"
-        placeholder="Confirmar nova senha"
-        icon={FiLock}
-      />
+        <Input
+          containerStyle={{marginTop: 24}}
+          type="password"
+          name="old_password"
+          placeholder="Senha Atual"
+          icon={FiLock}
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Nova Senha"
+          icon={FiLock}
+        />
+        <Input
+          type="password"
+          name="password_confirmation"
+          placeholder="Confirmar nova senha"
+          icon={FiLock}
+        />
 
-      <Button type="submit" >
-        {authLoading ? 'Carregando...' : 'Alterar dados'}
-      </Button>
+        <Button type="submit" >
+          {authLoading ? 'Carregando...' : 'Alterar dados'}
+        </Button>
       </Form>
     </Container>
   );
