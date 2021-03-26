@@ -6,6 +6,7 @@ export const Container = styled.button`
   justify-content: center;
 
   max-width: 20rem;
+  max-height: 59px;
   width: 100%;
 
   border: 0;
