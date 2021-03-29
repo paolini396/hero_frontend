@@ -66,6 +66,7 @@ export const Profile = () => {
         } = data;
 
         const formData = {
+          id: user.id,
           name,
           email,
           ...(old_password

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import { useComic } from '../../hooks/comic';
 import { useCharacter } from '../../hooks/character';
 
@@ -8,10 +8,17 @@ import { Card } from '../../components/Card';
 import { Container, Tabs, Content } from './styles';
 
 const Dashboard: React.FC = () => {
-  const { list: listComics, comics } = useComic();
+  const history = useHistory();
+
+  const { list: listComics, comics, show } = useComic();
   const { list: listCharacters, characters } = useCharacter();
 
   const [selectedTabId, setDelectedTabId] = useState('favorites');
+
+ const handleShowComic = async (id: string) => {
+  await show(id);
+  history.push('/comic');
+ }
 
   useEffect(() => {
     async function loadData() {
@@ -19,7 +26,7 @@ const Dashboard: React.FC = () => {
       await listCharacters();
     };
     loadData();
-  }, [])
+  }, [listComics, listCharacters])
 
   return (
     <Container>
@@ -50,8 +57,9 @@ const Dashboard: React.FC = () => {
               {comics?.map(comic => (
                 <Card
                   key={comic.id}
-                title={comic.title}
-                poster={`${comic.image_url}.${comic.extension}`}
+                  title={comic.title}
+                  poster={`${comic.image_url}.${comic.extension}`}
+                  onClick={() => handleShowComic(comic.id) }
               />
               ))}
             </>
@@ -60,9 +68,10 @@ const Dashboard: React.FC = () => {
             <>
               {characters?.map(character => (
                 <Card
-                key={character.id}
-                title={character.name}
-                poster={`${character.image_url}.${character.extension}`}
+                  key={character.id}
+                  title={character.name}
+                  poster={`${character.image_url}.${character.extension}`}
+                  onClick={() => {}}
               />
               ))}
             </>

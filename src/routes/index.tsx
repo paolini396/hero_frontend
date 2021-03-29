@@ -10,6 +10,7 @@ import SignUp from '../pages/SignUp';
 
 import Dashboard from '../pages/Dashboard';
 import { Profile } from '../pages/Profile';
+import { Comic } from '../pages/Comic';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -19,6 +20,7 @@ const Routes: React.FC = () => (
     <Header>
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/comic" component={Comic} isPrivate />
     </Header>
   </Switch>
 );

@@ -1,25 +1,27 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
 export const Container = styled.button`
-  position: relative;
-  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
   border: 0;
   gap: 20px;
+  border-radius: 4px;
+  padding: 5px 0;
+  box-shadow: 0px 02px 8px #c4c4c4;
 
   img {
-    width: 300px;
-    height: 300px;
-    width: 14.31rem;
-    height: 21.25rem;
+    width: 200;
+    height: 200px;
   }
 
-  > div {
+  > .card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
-
-    .movie-info {
+    .card-info {
       max-width: 12.31rem;
       width: 100%;
 
@@ -28,7 +30,7 @@ export const Container = styled.button`
 
       > span {
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 12px;
         color: #000;
         width: 100%;
         margin-top: auto;
